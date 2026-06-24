@@ -1,0 +1,10 @@
+flask>=3.0
+python-jobspy>=1.1.80
+
+# NOTE for Python 3.13+ (e.g. 3.14):
+# python-jobspy pins numpy==1.26.3, which FAILS to import on Python 3.13+
+# (OverflowError: cannot convert longdouble infinity to integer).
+# After installing the above, force a newer numpy that has 3.13/3.14 wheels:
+#     pip install "numpy>=2.3"
+# jobspy runs fine against numpy 2.x despite its pin. (On Python 3.11/3.12 the
+# default numpy 1.26.3 works as-is and this step isn't needed.)

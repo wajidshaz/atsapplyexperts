@@ -1,0 +1,40 @@
+# ─── Secrets / environment ────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ─── Node ─────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ─── Build / output ───────────────────────────────────────────────────
+dist/
+build/
+.next/
+out/
+coverage/
+
+# ─── Python (jobspy-service) ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# ─── User uploads (resumes etc.) ──────────────────────────────────────
+uploads/
+
+# ─── Logs ─────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── OS / editor ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
