@@ -61,8 +61,9 @@ app.use((err, _req, res, _next) => {
 });
 
 const PORT = process.env.PORT || 4000;
-// Don't bind a port when imported by tests.
-if (process.env.NODE_ENV !== 'test') {
+// Don't bind a port when imported by tests or running on Vercel
+// (serverless invokes the exported app directly — see api/index.js).
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   app.listen(PORT, () => console.log(`ATS Apply Experts API on :${PORT}`));
 }
 

@@ -10,8 +10,10 @@ import crypto from 'node:crypto';
 import { PDFParse } from 'pdf-parse';   // v2 class-based API
 import mammoth from 'mammoth';
 
-export const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
-fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+// On Vercel (serverless) the only writable path is /tmp; elsewhere use ./uploads.
+export const UPLOAD_DIR = process.env.UPLOAD_DIR || (process.env.VERCEL ? '/tmp/uploads' : './uploads');
+try { fs.mkdirSync(UPLOAD_DIR, { recursive: true }); }
+catch (e) { console.warn('[upload] could not create UPLOAD_DIR:', e.message); }
 
 const ALLOWED = new Set([
   'application/pdf',
